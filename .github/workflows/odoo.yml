@@ -1,4 +1,4 @@
-name: Odoo 19
+name: Odoo 18
 on: [push, pull_request]
 permissions:
   contents: read

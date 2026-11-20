@@ -49,5 +49,5 @@ request = urllib.request.Request(
 with client.open(request, timeout=25) as response:
     result = json.load(response)["result"]
 assert result["db"] == DATABASE and result["is_system"]
-check_assets(fetch("/odoo?debug=0"), b"web.assets_web.min.css")
+check_assets(fetch("/web?debug=0"), b"web.assets_web.min.css")
 print("Login and backend assets loaded successfully.")
