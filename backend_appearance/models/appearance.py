@@ -110,6 +110,12 @@ class BackendAppearance(models.AbstractModel):
         raise ValidationError(_("Invalid appearance scope."))
 
     @api.model
+    def get_current_profile(self):
+        if not self.env.user.has_group("base.group_user"):
+            raise AccessError(_("Only internal users can read the backend appearance."))
+        return self._published(self.env.company)
+
+    @api.model
     def get_editor(self, scope):
         self._check_admin()
         company = self._scope_company(scope)
