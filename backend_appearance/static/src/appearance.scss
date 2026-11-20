@@ -56,7 +56,8 @@
 }
 
 .ba-photo-thumbnail {
-    width: min(100%, 16rem);
+    width: 16rem;
+    max-width: 100%;
     height: 2.5rem;
     object-fit: cover;
 }
