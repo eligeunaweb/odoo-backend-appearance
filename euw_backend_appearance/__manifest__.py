@@ -9,9 +9,9 @@
     "data": ["views/appearance.xml"],
     "assets": {
         "web.assets_backend": [
-            "backend_appearance/static/src/appearance.js",
-            "backend_appearance/static/src/appearance.xml",
-            "backend_appearance/static/src/appearance.scss",
+            "euw_backend_appearance/static/src/appearance.js",
+            "euw_backend_appearance/static/src/appearance.xml",
+            "euw_backend_appearance/static/src/appearance.scss",
         ],
     },
     "installable": True,
