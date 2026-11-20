@@ -2,13 +2,15 @@
 
 Ajustes visuales para el cliente interno de Odoo.
 
-![Apariencia del gestor para Odoo 19 Community](backend_appearance/static/description/banner.png)
+![Apariencia del gestor para Odoo 19 Community](euw_backend_appearance/static/description/banner.png)
 
-[Editor de apariencia](backend_appearance/static/description/editor.jpg) ·
-[Menú de aplicaciones](backend_appearance/static/description/apps-menu.jpg) ·
-[Biblioteca de temas](backend_appearance/static/description/themes.jpg)
+[Editor de apariencia](euw_backend_appearance/static/description/editor.jpg) ·
+[Menú de aplicaciones](euw_backend_appearance/static/description/apps-menu.jpg) ·
+[Biblioteca de temas](euw_backend_appearance/static/description/themes.jpg)
 
 ## Instalar y comprobar
+
+El nombre técnico es `euw_backend_appearance`. Si instalaste el módulo anterior `backend_appearance`, exporta los perfiles y temas que quieras conservar antes de desinstalarlo. Después instala el módulo con el nuevo nombre e importa los JSON. Odoo lo trata como una instalación independiente. Los resultados de pruebas de servidor publicados son anteriores al cambio de nombre.
 
 En una base desechable de Odoo 19, añade el repositorio a la ruta de módulos del servidor, actualiza la lista de aplicaciones en modo desarrollador e instala **Apariencia del gestor**. Quita el filtro Aplicaciones si hace falta. Abre **Ajustes → Apariencia del gestor**.
 
@@ -25,13 +27,13 @@ El estilo **Personalizado** permite elegir el fondo del menú y el resaltado de 
 Para instalar el módulo y ejecutar las pruebas automatizadas en Docker, abre PowerShell en esta carpeta:
 
 ```powershell
-docker compose -p codex-odoo-appearance -f compose.test.yml run --rm odoo odoo -d appearance_test -i backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
+docker compose -p codex-odoo-appearance -f compose.test.yml run --rm odoo odoo -d appearance_test -i euw_backend_appearance --test-enable --test-tags /euw_backend_appearance --stop-after-init
 ```
 
 Este proyecto Compose tiene su propia base y su propia red. Para usar una instancia de pruebas existente, conserva sus parámetros de conexión y rutas de módulos:
 
 ```sh
-odoo -d appearance_test -i backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
+odoo -d appearance_test -i euw_backend_appearance --test-enable --test-tags /euw_backend_appearance --stop-after-init
 ```
 
 Para la aceptación manual, instala Contactos, Ventas e Inventario. Crea y edita un contacto, guarda un presupuesto con un producto y abre un listado de Inventario. Comprueba búsquedas, filtros, permisos de un usuario normal y el diseño en pantalla estrecha. Actualiza el módulo y desinstálalo desde Aplicaciones en la base de pruebas. Recarga el cliente y abre de nuevo los registros creados. Comprueba que se recupera el aspecto original y se elimina el perfil publicado.

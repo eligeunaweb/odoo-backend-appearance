@@ -38,10 +38,10 @@ function foreground(color) {
     return luminance > 0.179 ? "#000000" : "#ffffff";
 }
 
-registry.category("services").add("backend_appearance", {
+registry.category("services").add("euw_backend_appearance", {
     dependencies: ["orm"],
     start(env, { orm }) {
-        let published = { ...DEFAULT_PROFILE, ...session.backend_appearance };
+        let published = { ...DEFAULT_PROFILE, ...session.euw_backend_appearance };
         let draft = null;
         const state = { ...published };
         const render = (profile) => {
@@ -124,7 +124,7 @@ registry.category("services").add("backend_appearance", {
             render(state);
         };
         update(published);
-        const call = (method, args) => orm.call("backend.appearance", method, args);
+        const call = (method, args) => orm.call("euw.backend.appearance", method, args);
         const refresh = async () => {
             published = (await call("get_editor", ["company"])).profile;
             draft = null;
@@ -157,11 +157,11 @@ registry.category("services").add("backend_appearance", {
 });
 
 class AppearancePanel extends Component {
-    static template = "backend_appearance.Panel";
+    static template = "euw_backend_appearance.Panel";
     static props = ["*"];
 
     setup() {
-        this.appearance = useService("backend_appearance");
+        this.appearance = useService("euw_backend_appearance");
         this.notification = useService("notification");
         this.form = useState({ ...this.appearance.state });
         this.editor = useState({
@@ -410,4 +410,4 @@ class AppearancePanel extends Component {
     }
 }
 
-registry.category("actions").add("backend_appearance.panel", AppearancePanel);
+registry.category("actions").add("euw_backend_appearance.panel", AppearancePanel);

@@ -13,5 +13,5 @@ class IrHttp(models.AbstractModel):
             allowed = {str(cid) for cid in companies["allowed_companies"]}
             cid = int(selected[0]) if set(selected) <= allowed else companies["current_company"]
             company = self.env["res.company"].browse(cid)
-            result["backend_appearance"] = self.env["backend.appearance"]._published(company)
+            result["euw_backend_appearance"] = self.env["euw.backend.appearance"]._published(company)
         return result
