@@ -10,6 +10,8 @@ Elige un acento, un color para la barra y una densidad. Pulsa **Previsualizar** 
 
 En **Patrón de la barra superior**, elige liso, puntos, cuadrícula, diagonales u ondas. Para un fondo con patrón, ajusta la intensidad de 0 a 100 y pulsa **Previsualizar**. El patrón se puede combinar con el color estándar o con un color propio.
 
+Carga una **Foto de la barra superior** en PNG, JPEG o WebP de hasta 4 MB. Una foto panorámica suele encajar mejor. Odoo reduce la imagen y la barra muestra un recorte centrado con una capa oscura para los textos. Al quitar la foto reaparecen el color y el patrón elegidos. En **Estilo del menú de aplicaciones** puedes elegir estándar, claro u oscuro.
+
 Para instalar el módulo y ejecutar las pruebas automatizadas en Docker, abre PowerShell en esta carpeta:
 
 ```powershell

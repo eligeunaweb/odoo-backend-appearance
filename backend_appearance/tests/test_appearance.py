@@ -1,3 +1,8 @@
+import base64
+import io
+
+from PIL import Image
+
 from odoo.exceptions import AccessError, ValidationError
 from odoo.tests import TransactionCase, new_test_user, tagged
 
@@ -51,3 +56,30 @@ class TestAppearance(TransactionCase):
             service.publish({"accent": "", "navbar": "", "density": "normal"})
         with self.assertRaises(AccessError):
             service.restore()
+        with self.assertRaises(AccessError):
+            service.normalize_photo("")
+
+    def test_top_bar_photo_and_menu(self):
+        service = self.env["backend.appearance"]
+        original = io.BytesIO()
+        Image.new("RGB", (2200, 600), "#3a7bb5").save(original, "PNG")
+        encoded = base64.b64encode(original.getvalue()).decode()
+        normalized = service.normalize_photo(encoded)
+        with Image.open(io.BytesIO(base64.b64decode(normalized))) as image:
+            self.assertEqual(image.format, "JPEG")
+            self.assertLessEqual(image.width, 1920)
+            self.assertLessEqual(image.height, 420)
+        published = service.publish({
+            **DEFAULT_PROFILE,
+            "navbar": "#121212",
+            "navbar_pattern": "dots",
+            "navbar_photo": normalized,
+            "apps_menu": "dark",
+        })
+        self.assertEqual(service._published(), published)
+        self.assertEqual(published["navbar_pattern"], "dots")
+        self.assertEqual(published["apps_menu"], "dark")
+        for invalid in ("not a photo", base64.b64encode(b"<svg/>").decode()):
+            with self.assertRaises(ValidationError):
+                service.normalize_photo(invalid)
+        self.assertEqual(service.restore(), DEFAULT_PROFILE)

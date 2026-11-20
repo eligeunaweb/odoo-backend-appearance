@@ -145,3 +145,74 @@ msgstr "El patrón de la barra superior no es válido."
 #: code:addons/backend_appearance/models/appearance.py:0
 msgid "Pattern intensity must be between 0 and 100."
 msgstr "La intensidad del patrón debe estar entre 0 y 100."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Top bar photo"
+msgstr "Foto de la barra superior"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "PNG, JPEG or WebP, up to 4 MB. The photo replaces the color and pattern while active."
+msgstr "PNG, JPEG o WebP, hasta 4 MB. Mientras esté activa, la foto sustituye el color y el patrón."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Selected top bar photo"
+msgstr "Foto seleccionada para la barra superior"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Remove photo"
+msgstr "Quitar foto"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Apps menu style"
+msgstr "Estilo del menú de aplicaciones"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Odoo default"
+msgstr "Estándar de Odoo"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Light"
+msgstr "Claro"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Dark"
+msgstr "Oscuro"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid apps menu style."
+msgstr "El estilo del menú de aplicaciones no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid top bar photo."
+msgstr "La foto de la barra superior no es válida."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Choose an image of up to 4 MB."
+msgstr "Elige una imagen de hasta 4 MB."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Choose a still image of up to 16 megapixels."
+msgstr "Elige una imagen estática de hasta 16 megapíxeles."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Choose a valid PNG, JPEG or WebP image."
+msgstr "Elige una imagen válida en PNG, JPEG o WebP."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Choose a smaller or less detailed image."
+msgstr "Elige una imagen más pequeña o con menos detalle."

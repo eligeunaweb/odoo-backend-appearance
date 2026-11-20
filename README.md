@@ -10,6 +10,8 @@ Pick an accent, a navigation bar color and a density. Select **Preview** and ope
 
 Under **Top bar pattern**, choose solid, dots, grid, diagonals or waves. For a patterned background, set the intensity between 0 and 100 and select **Preview**. Patterns work with the standard bar color or a custom color.
 
+Upload a **Top bar photo** as PNG, JPEG or WebP, up to 4 MB. A wide photo usually fits best. Odoo resizes the image and the bar uses a centered crop with a dark overlay for labels. Removing the photo restores the chosen color and pattern. Under **Apps menu style**, choose default, light or dark.
+
 To run the installation and automated tests against an isolated Docker database, open a terminal in this repository:
 
 ```sh

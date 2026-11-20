@@ -11,6 +11,8 @@ const DEFAULT_PROFILE = {
     density: "normal",
     navbar_pattern: "solid",
     pattern_intensity: 45,
+    navbar_photo: "",
+    apps_menu: "standard",
 };
 
 function foreground(color) {
@@ -42,7 +44,16 @@ registry.category("services").add("backend_appearance", {
                 }
             }
             root.dataset.baDensity = profile.density;
-            if (PATTERNS.includes(profile.navbar_pattern)) {
+            const photo = profile.navbar_photo;
+            const hasPhoto = typeof photo === "string" && /^\/9j\/[A-Za-z0-9+/]+={0,2}$/.test(photo);
+            root.toggleAttribute("data-ba-photo", hasPhoto);
+            if (hasPhoto) {
+                root.style.setProperty("--ba-navbar-photo", `url("data:image/jpeg;base64,${photo}")`);
+            } else {
+                root.style.removeProperty("--ba-navbar-photo");
+            }
+            root.dataset.baAppsMenu = profile.apps_menu;
+            if (!hasPhoto && PATTERNS.includes(profile.navbar_pattern)) {
                 root.dataset.baPattern = profile.navbar_pattern;
                 root.style.setProperty("--ba-pattern-opacity", profile.pattern_intensity / 250);
                 if (root.hasAttribute("data-ba-navbar")) {
@@ -65,6 +76,9 @@ registry.category("services").add("backend_appearance", {
         update(published);
         return {
             state,
+            normalizePhoto(encoded) {
+                return orm.call("backend.appearance", "normalize_photo", [encoded]);
+            },
             preview: update,
             discard() {
                 update(published);
@@ -102,6 +116,32 @@ class AppearancePanel extends Component {
         this.form.navbar_pattern = event.currentTarget.dataset.pattern;
     }
 
+    async uploadPhoto(event) {
+        const input = event.currentTarget;
+        const file = input.files[0];
+        input.value = "";
+        if (!file) {
+            return;
+        }
+        if (file.size > 4 * 1024 * 1024) {
+            this.notification.add(_t("Choose an image of up to 4 MB."), { type: "warning" });
+            return;
+        }
+        await this.save(async () => {
+            const uri = await new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = () => reject(reader.error);
+                reader.readAsDataURL(file);
+            });
+            this.form.navbar_photo = await this.appearance.normalizePhoto(uri.split(",")[1]);
+        }, false);
+    }
+
+    removePhoto() {
+        this.form.navbar_photo = "";
+    }
+
     preview() {
         this.appearance.preview(this.profile);
         this.notification.add(_t("Preview is active in this tab."), { type: "info" });
@@ -125,12 +165,14 @@ class AppearancePanel extends Component {
         return this.save(() => this.appearance.restore());
     }
 
-    async save(operation) {
+    async save(operation, published = true) {
         this.form.busy = true;
         try {
             await operation();
-            Object.assign(this.form, this.appearance.state);
-            this.notification.add(_t("Appearance settings saved."), { type: "success" });
+            if (published) {
+                Object.assign(this.form, this.appearance.state);
+                this.notification.add(_t("Appearance settings saved."), { type: "success" });
+            }
         } finally {
             this.form.busy = false;
         }

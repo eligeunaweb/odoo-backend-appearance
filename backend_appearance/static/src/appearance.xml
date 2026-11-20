@@ -13,7 +13,7 @@
                         <button class="btn btn-secondary" t-on-click="() => form.accent = ''">Use Odoo default</button>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div t-if="!form.navbar_photo" class="mb-3">
                     <label class="form-label" for="ba-navbar">Top bar color</label>
                     <div class="d-flex gap-2">
                         <input id="ba-navbar" type="color" t-att-value="form.navbar || '#ffffff'"
@@ -21,7 +21,7 @@
                         <button class="btn btn-secondary" t-on-click="() => form.navbar = ''">Use Odoo default</button>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div t-if="!form.navbar_photo" class="mb-3">
                     <fieldset>
                         <legend class="form-label fs-6">Top bar pattern</legend>
                         <div class="d-flex flex-wrap gap-2">
@@ -45,6 +45,25 @@
                             </div>
                         </div>
                     </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="ba-photo">Top bar photo</label>
+                    <input id="ba-photo" type="file" class="form-control w-auto mw-100"
+                           accept="image/png,image/jpeg,image/webp" t-on-change="uploadPhoto"/>
+                    <div class="form-text">PNG, JPEG or WebP, up to 4 MB. The photo replaces the color and pattern while active.</div>
+                    <div t-if="form.navbar_photo" class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                        <img class="ba-photo-thumbnail rounded" t-att-src="'data:image/jpeg;base64,' + form.navbar_photo"
+                             alt="Selected top bar photo"/>
+                        <button type="button" class="btn btn-outline-secondary" t-on-click="removePhoto">Remove photo</button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="ba-apps-menu">Apps menu style</label>
+                    <select id="ba-apps-menu" class="form-select w-auto" t-model="form.apps_menu">
+                        <option value="standard">Odoo default</option>
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="ba-density">Density</label>
