@@ -10,8 +10,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install and test
         run: docker compose -f compose.test.yml run --rm odoo odoo -d appearance_ci -i backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
-      - name: Update
-        run: docker compose -f compose.test.yml run --rm odoo odoo -d appearance_ci -u backend_appearance --stop-after-init
+      - name: Install business apps
+        run: docker compose -f compose.test.yml run --rm odoo odoo -d appearance_ci -i contacts,sale_management,stock --stop-after-init
+      - name: Update and test with business apps installed
+        run: docker compose -f compose.test.yml run --rm odoo odoo -d appearance_ci -u backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
       - name: Remove test containers
         if: always()
         run: docker compose -f compose.test.yml down -v

@@ -1,9 +1,10 @@
 from odoo.exceptions import AccessError, ValidationError
-from odoo.tests import TransactionCase, new_test_user
+from odoo.tests import TransactionCase, new_test_user, tagged
 
 from ..models.appearance import DEFAULT_PROFILE, KEY
 
 
+@tagged("post_install", "-at_install")
 class TestAppearance(TransactionCase):
     def test_publish_restore(self):
         service = self.env["backend.appearance"]
