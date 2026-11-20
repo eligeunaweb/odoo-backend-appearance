@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<odoo>
-    <record id="action_appearance" model="ir.actions.client">
-        <field name="name">Backend Appearance</field>
-        <field name="tag">backend_appearance.panel</field>
-    </record>
-    <menuitem id="menu_appearance" name="Backend Appearance" parent="base.menu_administration"
-              action="action_appearance" groups="base.group_system" sequence="20"/>
-</odoo>
