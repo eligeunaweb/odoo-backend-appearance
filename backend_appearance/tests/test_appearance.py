@@ -97,3 +97,32 @@ class TestAppearance(TransactionCase):
             with self.assertRaises(ValidationError):
                 service.publish({**profile, "apps_menu_highlight": invalid})
         self.assertEqual(service._published()["apps_menu_highlight"], "#000011")
+
+    def test_company_precedence_and_fallback(self):
+        service = self.env["backend.appearance"]
+        other = self.env["res.company"].create({"name": "Appearance test company"})
+        global_profile = service.publish({**DEFAULT_PROFILE, "accent": "#114488"})
+        scoped = service.with_context(allowed_company_ids=[other.id])
+        company_profile = scoped.publish({**DEFAULT_PROFILE, "accent": "#882211"}, "company")
+        self.assertEqual(service._published(), global_profile)
+        self.assertEqual(scoped.get_editor("company")["profile"], company_profile)
+        self.assertEqual(service._published(self.env.company), global_profile)
+        self.assertEqual(scoped.restore("company"), global_profile)
+        self.assertEqual(scoped.get_editor("company")["profile"], global_profile)
+        employee = new_test_user(self.env, login="appearance_scope_employee", groups="base.group_user")
+        with self.assertRaises(AccessError):
+            scoped.with_user(employee).publish(global_profile, "company")
+
+    def test_saved_and_imported_themes_do_not_publish(self):
+        service = self.env["backend.appearance"]
+        original = service._published()
+        theme = {**DEFAULT_PROFILE, "text_size": "large", "photo_position": 75}
+        self.assertIn("Forest", service.save_theme(" Forest ", theme))
+        self.assertEqual(service.load_theme("Forest"), theme)
+        self.assertEqual(service.import_theme({"version": 1, "profile": theme}), theme)
+        with self.assertRaises(ValidationError):
+            service.import_theme({"version": 2, "profile": theme})
+        with self.assertRaises(ValidationError):
+            service.import_theme({"version": 1, "profile": {**theme, "photo_position": 101}})
+        self.assertNotIn("Forest", service.delete_theme("Forest"))
+        self.assertEqual(service._published(), original)

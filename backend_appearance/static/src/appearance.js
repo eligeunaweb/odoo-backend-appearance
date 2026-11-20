@@ -1,8 +1,9 @@
-import { Component, useState } from "@odoo/owl";
+import { Component, onWillStart, useEffect, useState } from "@odoo/owl";
 import { registry } from "@web/core/registry";
 import { session } from "@web/session";
 import { useService } from "@web/core/utils/hooks";
 import { _t } from "@web/core/l10n/translation";
+import { user } from "@web/core/user";
 
 const PATTERNS = ["dots", "grid", "diagonal", "waves"];
 const DEFAULT_PROFILE = {
@@ -15,7 +16,18 @@ const DEFAULT_PROFILE = {
     apps_menu: "standard",
     apps_menu_background: "#182337",
     apps_menu_highlight: "#34465f",
+    navbar_mode: "color",
+    photo_position: 50,
+    text_size: "standard",
+    logo: "",
+    favicon: "",
 };
+
+function imageUrl(data) {
+    return typeof data === "string" && /^\/9j\/[A-Za-z0-9+/]+={0,2}$/.test(data)
+        ? `data:image/jpeg;base64,${data}`
+        : "";
+}
 
 function foreground(color) {
     const channels = color.slice(1).match(/../g).map((hex) => {
@@ -30,6 +42,7 @@ registry.category("services").add("backend_appearance", {
     dependencies: ["orm"],
     start(env, { orm }) {
         let published = { ...DEFAULT_PROFILE, ...session.backend_appearance };
+        let draft = null;
         const state = { ...published };
         const render = (profile) => {
             const root = document.documentElement;
@@ -46,13 +59,35 @@ registry.category("services").add("backend_appearance", {
                 }
             }
             root.dataset.baDensity = profile.density;
-            const photo = profile.navbar_photo;
-            const hasPhoto = typeof photo === "string" && /^\/9j\/[A-Za-z0-9+/]+={0,2}$/.test(photo);
+            const photo = profile.navbar_mode === "photo" && imageUrl(profile.navbar_photo);
+            const hasPhoto = Boolean(photo);
             root.toggleAttribute("data-ba-photo", hasPhoto);
             if (hasPhoto) {
-                root.style.setProperty("--ba-navbar-photo", `url("data:image/jpeg;base64,${photo}")`);
+                root.style.setProperty("--ba-navbar-photo", `url("${photo}")`);
             } else {
                 root.style.removeProperty("--ba-navbar-photo");
+            }
+            root.style.setProperty("--ba-photo-position", `${profile.photo_position}%`);
+            root.dataset.baText = profile.text_size;
+            const logo = imageUrl(profile.logo);
+            root.toggleAttribute("data-ba-logo", Boolean(logo));
+            if (logo) {
+                root.style.setProperty("--ba-logo", `url("${logo}")`);
+            } else {
+                root.style.removeProperty("--ba-logo");
+            }
+            const favicon = imageUrl(profile.favicon);
+            const icon = document.getElementById("ba-favicon");
+            if (favicon) {
+                const link = icon || document.createElement("link");
+                link.id = "ba-favicon";
+                link.rel = "icon";
+                link.href = favicon;
+                if (!icon) {
+                    document.head.append(link);
+                }
+            } else {
+                icon?.remove();
             }
             root.dataset.baAppsMenu = profile.apps_menu;
             for (const [field, name] of [
@@ -68,7 +103,7 @@ registry.category("services").add("backend_appearance", {
                     root.style.removeProperty(`--ba-apps-${name}-text`);
                 }
             }
-            if (!hasPhoto && PATTERNS.includes(profile.navbar_pattern)) {
+            if (profile.navbar_mode === "pattern" && PATTERNS.includes(profile.navbar_pattern)) {
                 root.dataset.baPattern = profile.navbar_pattern;
                 root.style.setProperty("--ba-pattern-opacity", profile.pattern_intensity / 250);
                 if (root.hasAttribute("data-ba-navbar")) {
@@ -89,22 +124,33 @@ registry.category("services").add("backend_appearance", {
             render(state);
         };
         update(published);
+        const call = (method, args) => orm.call("backend.appearance", method, args);
+        const refresh = async () => {
+            published = (await call("get_editor", ["company"])).profile;
+            draft = null;
+            update(published);
+        };
         return {
             state,
-            normalizePhoto(encoded) {
-                return orm.call("backend.appearance", "normalize_photo", [encoded]);
+            call,
+            get draft() {
+                return draft;
             },
-            preview: update,
+            preview(profile, scope) {
+                draft = { profile, scope };
+                update(profile);
+            },
             discard() {
+                draft = null;
                 update(published);
             },
-            async publish(profile) {
-                published = await orm.call("backend.appearance", "publish", [profile]);
-                update(published);
+            async publish(profile, scope) {
+                await call("publish", [profile, scope]);
+                await refresh();
             },
-            async restore() {
-                published = await orm.call("backend.appearance", "restore", []);
-                update(published);
+            async restore(scope) {
+                await call("restore", [scope]);
+                await refresh();
             },
         };
     },
@@ -117,7 +163,27 @@ class AppearancePanel extends Component {
     setup() {
         this.appearance = useService("backend_appearance");
         this.notification = useService("notification");
-        this.form = useState({ ...this.appearance.state, busy: false });
+        this.form = useState({ ...this.appearance.state });
+        this.editor = useState({
+            busy: false, tab: "bar", scope: "global", saved: "", themes: [], themeName: "", selectedTheme: "",
+        });
+        this.companyName = user.activeCompanies[0]?.name || "";
+        this.tabs = [
+            { id: "bar", name: _t("Top bar") },
+            { id: "menu", name: _t("Apps menu") },
+            { id: "workspace", name: _t("Workspace") },
+            { id: "themes", name: _t("Themes") },
+        ];
+        this.images = [
+            { id: "logo", label: _t("Top bar logo") },
+            { id: "favicon", label: _t("Browser tab icon") },
+        ];
+        this.menuStyles = [
+            { id: "standard", name: _t("Odoo default") },
+            { id: "light", name: _t("Light") },
+            { id: "dark", name: _t("Dark") },
+            { id: "custom", name: _t("Custom") },
+        ];
         this.patterns = [
             { id: "solid", label: _t("Solid") },
             { id: "dots", label: _t("Dots") },
@@ -125,15 +191,51 @@ class AppearancePanel extends Component {
             { id: "diagonal", label: _t("Diagonals") },
             { id: "waves", label: _t("Waves") },
         ];
+        onWillStart(async () => {
+            const draft = this.appearance.draft;
+            await this.loadEditor(draft?.scope || "global");
+            if (draft) {
+                Object.assign(this.form, draft.profile);
+            }
+        });
+        useEffect(() => {
+            if (this.dirty) {
+                this.appearance.preview(this.profile, this.editor.scope);
+            } else {
+                this.appearance.discard();
+            }
+        }, () => [this.serializedProfile, this.editor.saved]);
+    }
+
+    async loadEditor(scope) {
+        const { profile, themes } = await this.appearance.call("get_editor", [scope]);
+        this.editor.scope = scope;
+        this.editor.themes = themes;
+        Object.assign(this.form, profile);
+        this.editor.saved = this.serializedProfile;
+    }
+
+    switchTab(event) {
+        this.editor.tab = event.currentTarget.dataset.section;
+    }
+
+    switchScope(event) {
+        const scope = event.currentTarget.value;
+        return this.run(() => this.loadEditor(scope));
     }
 
     selectPattern(event) {
         this.form.navbar_pattern = event.currentTarget.dataset.pattern;
     }
 
+    selectMenu(event) {
+        this.form.apps_menu = event.currentTarget.dataset.menuStyle;
+    }
+
     async uploadPhoto(event) {
         const input = event.currentTarget;
         const file = input.files[0];
+        const field = input.dataset.field;
         input.value = "";
         if (!file) {
             return;
@@ -142,54 +244,122 @@ class AppearancePanel extends Component {
             this.notification.add(_t("Choose an image of up to 4 MB."), { type: "warning" });
             return;
         }
-        await this.save(async () => {
+        await this.run(async () => {
             const uri = await new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = () => resolve(reader.result);
                 reader.onerror = () => reject(reader.error);
                 reader.readAsDataURL(file);
             });
-            this.form.navbar_photo = await this.appearance.normalizePhoto(uri.split(",")[1]);
-        }, false);
+            this.form[field] = await this.appearance.call("normalize_photo", [uri.split(",")[1], field]);
+        });
     }
 
-    removePhoto() {
-        this.form.navbar_photo = "";
+    removePhoto(event) {
+        const field = event.currentTarget.dataset.field;
+        this.form[field] = "";
+        if (field === "navbar_photo") {
+            this.form.navbar_mode = this.form.navbar_pattern === "solid" ? "color" : "pattern";
+        }
     }
 
-    preview() {
-        this.appearance.preview(this.profile);
-        this.notification.add(_t("Preview is active in this tab."), { type: "info" });
+    get serializedProfile() {
+        return JSON.stringify(this.profile);
+    }
+
+    get dirty() {
+        return this.editor.saved && this.serializedProfile !== this.editor.saved;
     }
 
     get profile() {
-        const { busy, pattern_intensity, ...values } = this.form;
-        return { ...values, pattern_intensity: Number(pattern_intensity) };
+        return {
+            ...this.form,
+            pattern_intensity: Number(this.form.pattern_intensity),
+            photo_position: Number(this.form.photo_position),
+        };
     }
 
     discard() {
         this.appearance.discard();
-        Object.assign(this.form, this.appearance.state);
+        Object.assign(this.form, JSON.parse(this.editor.saved));
     }
 
     apply() {
-        return this.save(() => this.appearance.publish(this.profile));
+        return this.run(async () => {
+            await this.appearance.publish(this.profile, this.editor.scope);
+            await this.loadEditor(this.editor.scope);
+            this.notification.add(_t("Appearance settings saved."), { type: "success" });
+        });
     }
 
     restore() {
-        return this.save(() => this.appearance.restore());
+        return this.run(async () => {
+            await this.appearance.restore(this.editor.scope);
+            await this.loadEditor(this.editor.scope);
+            this.notification.add(_t("Appearance settings saved."), { type: "success" });
+        });
     }
 
-    async save(operation, published = true) {
-        this.form.busy = true;
+    saveTheme() {
+        return this.run(async () => {
+            this.editor.themes = await this.appearance.call("save_theme", [this.editor.themeName, this.profile]);
+            this.editor.selectedTheme = this.editor.themeName.trim();
+        });
+    }
+
+    loadTheme() {
+        return this.run(async () => {
+            Object.assign(this.form, await this.appearance.call("load_theme", [this.editor.selectedTheme]));
+        });
+    }
+
+    deleteTheme() {
+        return this.run(async () => {
+            this.editor.themes = await this.appearance.call("delete_theme", [this.editor.selectedTheme]);
+            this.editor.selectedTheme = "";
+        });
+    }
+
+    exportTheme() {
+        const blob = new Blob([JSON.stringify({ version: 1, profile: this.profile }, null, 2)], {
+            type: "application/json",
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "odoo-appearance.json";
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    async importTheme(event) {
+        const input = event.currentTarget;
+        const file = input.files[0];
+        input.value = "";
+        if (!file) {
+            return;
+        }
+        await this.run(async () => {
+            let data;
+            try {
+                if (file.size > 1_000_000) {
+                    throw new Error("size");
+                }
+                data = JSON.parse(await file.text());
+            } catch {
+                this.notification.add(_t("Choose an appearance JSON file under 1 MB."), { type: "warning" });
+                return;
+            }
+            Object.assign(this.form, await this.appearance.call("import_theme", [data]));
+        });
+    }
+
+    async run(operation) {
+        this.editor.busy = true;
         try {
             await operation();
-            if (published) {
-                Object.assign(this.form, this.appearance.state);
-                this.notification.add(_t("Appearance settings saved."), { type: "success" });
-            }
         } finally {
-            this.form.busy = false;
+            this.editor.busy = false;
         }
     }
 }

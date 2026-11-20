@@ -236,3 +236,227 @@ msgstr "Fondo del menú de aplicaciones"
 #: code:addons/backend_appearance/static/src/appearance.xml:0
 msgid "Apps menu highlight"
 msgstr "Resaltado de la aplicación"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Changes preview live in this tab until applied."
+msgstr "Los cambios se ven al instante en esta pestaña hasta que los apliques."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Appearance scope"
+msgstr "Ámbito de la apariencia"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Global"
+msgstr "Global"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Appearance sections"
+msgstr "Secciones de apariencia"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Top bar"
+msgstr "Barra superior"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Background"
+msgstr "Fondo"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Solid color"
+msgstr "Color liso"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Pattern"
+msgstr "Patrón"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Photo"
+msgstr "Foto"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Vertical photo position"
+msgstr "Encuadre vertical de la foto"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Remove image"
+msgstr "Quitar imagen"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Apps menu"
+msgstr "Menú de aplicaciones"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Workspace"
+msgstr "Espacio de trabajo"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Text size"
+msgstr "Tamaño del texto"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Standard"
+msgstr "Estándar"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Large"
+msgstr "Grande"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Themes"
+msgstr "Temas"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Load a theme into the preview and apply it when ready."
+msgstr "Carga un tema en la vista previa y aplícalo cuando esté listo."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Theme name"
+msgstr "Nombre del tema"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Save theme"
+msgstr "Guardar tema"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Saved themes"
+msgstr "Temas guardados"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Choose a theme"
+msgstr "Elige un tema"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Load theme"
+msgstr "Cargar tema"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Delete theme"
+msgstr "Eliminar tema"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Import JSON"
+msgstr "Importar JSON"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Export JSON"
+msgstr "Exportar JSON"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Apply changes"
+msgstr "Aplicar cambios"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Discard changes"
+msgstr "Descartar cambios"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Unsaved changes"
+msgstr "Cambios sin guardar"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Use global appearance"
+msgstr "Usar la apariencia global"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Top bar logo"
+msgstr "Logotipo de la barra superior"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Browser tab icon"
+msgstr "Icono de la pestaña del navegador"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Choose an appearance JSON file under 1 MB."
+msgstr "Elige un archivo JSON de apariencia de menos de 1 MB."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid top bar mode."
+msgstr "El tipo de fondo de la barra no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid photo position."
+msgstr "El encuadre de la foto no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid text size."
+msgstr "El tamaño del texto no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid appearance image."
+msgstr "La imagen de apariencia no es válida."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid appearance scope."
+msgstr "El ámbito de la apariencia no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Enter a theme name of up to 60 characters."
+msgstr "Escribe un nombre de tema de hasta 60 caracteres."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "You can save up to 20 themes."
+msgstr "Puedes guardar hasta 20 temas."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Theme not found."
+msgstr "No se encontró el tema."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid or unsupported appearance theme file."
+msgstr "El archivo de tema no es válido o su versión no es compatible."
