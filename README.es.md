@@ -6,11 +6,13 @@ Ajustes visuales para el cliente interno de Odoo.
 
 En una base desechable de Odoo 19, añade el repositorio a la ruta de módulos del servidor, actualiza la lista de aplicaciones en modo desarrollador e instala **Apariencia del gestor**. Quita el filtro Aplicaciones si hace falta. Abre **Ajustes → Apariencia del gestor**.
 
-Elige un acento, un color para la barra y una densidad. Pulsa **Previsualizar** y abre un listado y un formulario reales de Contactos en esa misma pestaña. Vuelve a Ajustes para aplicar o descartar. Recarga una segunda sesión para comprobar la publicación. Usa **Restaurar valores originales** para recuperar el aspecto de Odoo. El perfil es global para toda la base.
+El panel se divide en **Barra superior**, **Menú de aplicaciones**, **Espacio de trabajo** y **Temas**. Los cambios se ven al instante en la pestaña actual. Puedes abrir Contactos y volver al panel para aplicar o descartar el borrador. En el selector de ámbito, elige el perfil global o el de la empresa activa. La empresa hereda el perfil global hasta que se guarde un perfil propio. **Usar la apariencia global** elimina la personalización de esa empresa.
 
-En **Patrón de la barra superior**, elige liso, puntos, cuadrícula, diagonales u ondas. Para un fondo con patrón, ajusta la intensidad de 0 a 100 y pulsa **Previsualizar**. El patrón se puede combinar con el color estándar o con un color propio.
+En Barra superior, cambia entre **Color liso**, **Patrón** y **Foto**. La foto tiene encuadre vertical. Puedes añadir un logotipo y un icono de pestaña. Las imágenes admiten PNG y JPEG de hasta 4 MB, y WebP cuando el servidor dispone del decodificador.
 
-Carga una **Foto de la barra superior** en PNG, JPEG o WebP de hasta 4 MB. Una foto panorámica suele encajar mejor. Odoo reduce la imagen y la barra muestra un recorte centrado con una capa oscura para los textos. Al quitar la foto reaparecen el color y el patrón elegidos. En **Estilo del menú de aplicaciones** puedes elegir estándar, claro u oscuro.
+En **Temas** puedes guardar hasta 20 combinaciones con nombre y exportarlas o importarlas como JSON de versión 1. Al cargar o importar un tema, queda como borrador hasta que pulses **Aplicar cambios**.
+
+En un laboratorio Windows ya instalado, ejecuta `./start-test.ps1 -Update` desde la carpeta del repositorio. El script repite las pruebas, prepara los recursos web y deja el servidor abierto en el puerto 18119.
 
 El estilo **Personalizado** permite elegir el fondo del menú y el resaltado de la aplicación. El texto cambia automáticamente a negro o blanco según el fondo de cada estado.
 

@@ -14,6 +14,13 @@ jobs:
         run: docker compose -f compose.test.yml run --rm odoo odoo -d appearance_ci -i contacts,sale_management,stock --stop-after-init
       - name: Update and test with business apps installed
         run: docker compose -f compose.test.yml run --rm odoo odoo -d appearance_ci -u backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
+      - name: Check compiled assets after recreating Odoo
+        run: |
+          docker compose -f compose.test.yml run --rm -d --service-ports --name appearance-ci-web odoo odoo -d appearance_ci
+          python scripts/check_test_assets.py appearance_ci
+          docker stop appearance-ci-web
+          docker compose -f compose.test.yml run --rm -d --service-ports --name appearance-ci-web-recreated odoo odoo -d appearance_ci
+          python scripts/check_test_assets.py appearance_ci
       - name: Remove test containers
         if: always()
-        run: docker compose -f compose.test.yml down -v
+        run: docker compose -f compose.test.yml down -v --remove-orphans
