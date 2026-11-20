@@ -1,0 +1,522 @@
+msgid ""
+msgstr ""
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: euw_backend_appearance
+#: model:ir.actions.client,name:euw_backend_appearance.action_appearance
+#: model:ir.ui.menu,name:euw_backend_appearance.menu_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Backend Appearance"
+msgstr "Apariencia del gestor"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Preview changes in this tab, then return here to apply or discard them."
+msgstr "Previsualiza los cambios en esta pestaña y vuelve aquí para aplicarlos o descartarlos."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Accent color"
+msgstr "Color de acento"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Top bar color"
+msgstr "Color de la barra superior"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Use Odoo default"
+msgstr "Usar el valor de Odoo"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Density"
+msgstr "Densidad"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Compact"
+msgstr "Compacta"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Spacious"
+msgstr "Espaciosa"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Preview"
+msgstr "Previsualizar"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Discard preview"
+msgstr "Descartar previsualización"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Restore defaults"
+msgstr "Restaurar valores originales"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Preview is active in this tab."
+msgstr "La previsualización está activa en esta pestaña."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Appearance settings saved."
+msgstr "Se han guardado los ajustes de apariencia."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid appearance profile."
+msgstr "El perfil de apariencia no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Use a color in #RRGGBB format."
+msgstr "Usa un color en formato #RRGGBB."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid density."
+msgstr "La densidad no es válida."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Only Settings administrators can change backend appearance."
+msgstr "Solo los administradores de Ajustes pueden cambiar la apariencia del gestor."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Top bar pattern"
+msgstr "Patrón de la barra superior"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Pattern intensity"
+msgstr "Intensidad del patrón"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Solid"
+msgstr "Liso"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Dots"
+msgstr "Puntos"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Grid"
+msgstr "Cuadrícula"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Diagonals"
+msgstr "Diagonales"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Waves"
+msgstr "Ondas"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid top bar pattern."
+msgstr "El patrón de la barra superior no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Pattern intensity must be between 0 and 100."
+msgstr "La intensidad del patrón debe estar entre 0 y 100."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Top bar photo"
+msgstr "Foto de la barra superior"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "PNG, JPEG or WebP, up to 4 MB. The photo replaces the color and pattern while active."
+msgstr "PNG, JPEG o WebP, hasta 4 MB. Mientras esté activa, la foto sustituye el color y el patrón."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Selected top bar photo"
+msgstr "Foto seleccionada para la barra superior"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Remove photo"
+msgstr "Quitar foto"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Apps menu style"
+msgstr "Estilo del menú de aplicaciones"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Odoo default"
+msgstr "Estándar de Odoo"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Light"
+msgstr "Claro"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Dark"
+msgstr "Oscuro"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid apps menu style."
+msgstr "El estilo del menú de aplicaciones no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid top bar photo."
+msgstr "La foto de la barra superior no es válida."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Choose an image of up to 4 MB."
+msgstr "Elige una imagen de hasta 4 MB."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Choose a still image of up to 16 megapixels."
+msgstr "Elige una imagen estática de hasta 16 megapíxeles."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Choose a valid PNG, JPEG or WebP image."
+msgstr "Elige una imagen válida en PNG, JPEG o WebP."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Choose a smaller or less detailed image."
+msgstr "Elige una imagen más pequeña o con menos detalle."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "This server cannot read WebP images. Choose PNG or JPEG."
+msgstr "Este servidor no puede leer imágenes WebP. Elige una imagen PNG o JPEG."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Custom"
+msgstr "Personalizado"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Apps menu background"
+msgstr "Fondo del menú de aplicaciones"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Apps menu highlight"
+msgstr "Resaltado de la aplicación"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Changes preview live in this tab until applied."
+msgstr "Los cambios se ven al instante en esta pestaña hasta que los apliques."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Appearance scope"
+msgstr "Ámbito de la apariencia"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Global"
+msgstr "Global"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Appearance sections"
+msgstr "Secciones de apariencia"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Top bar"
+msgstr "Barra superior"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Background"
+msgstr "Fondo"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Solid color"
+msgstr "Color liso"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Pattern"
+msgstr "Patrón"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Photo"
+msgstr "Foto"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Vertical photo position"
+msgstr "Encuadre vertical de la foto"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Remove image"
+msgstr "Quitar imagen"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Apps menu"
+msgstr "Menú de aplicaciones"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Workspace"
+msgstr "Espacio de trabajo"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Text size"
+msgstr "Tamaño del texto"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Standard"
+msgstr "Estándar"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Large"
+msgstr "Grande"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Themes"
+msgstr "Temas"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Load a theme into the preview and apply it when ready."
+msgstr "Carga un tema en la vista previa y aplícalo cuando esté listo."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Theme name"
+msgstr "Nombre del tema"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Save theme"
+msgstr "Guardar tema"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Saved themes"
+msgstr "Temas guardados"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Choose a theme"
+msgstr "Elige un tema"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Load theme"
+msgstr "Cargar tema"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Delete theme"
+msgstr "Eliminar tema"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Import JSON"
+msgstr "Importar JSON"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Export JSON"
+msgstr "Exportar JSON"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Apply changes"
+msgstr "Aplicar cambios"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Discard changes"
+msgstr "Descartar cambios"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Unsaved changes"
+msgstr "Cambios sin guardar"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Use global appearance"
+msgstr "Usar la apariencia global"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Top bar logo"
+msgstr "Logotipo de la barra superior"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Browser tab icon"
+msgstr "Icono de la pestaña del navegador"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.js:0
+msgid "Choose an appearance JSON file under 1 MB."
+msgstr "Elige un archivo JSON de apariencia de menos de 1 MB."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid top bar mode."
+msgstr "El tipo de fondo de la barra no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid photo position."
+msgstr "El encuadre de la foto no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid text size."
+msgstr "El tamaño del texto no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid appearance image."
+msgstr "La imagen de apariencia no es válida."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid appearance scope."
+msgstr "El ámbito de la apariencia no es válido."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Enter a theme name of up to 60 characters."
+msgstr "Escribe un nombre de tema de hasta 60 caracteres."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "You can save up to 20 themes."
+msgstr "Puedes guardar hasta 20 temas."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Theme not found."
+msgstr "No se encontró el tema."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/models/appearance.py:0
+msgid "Invalid or unsupported appearance theme file."
+msgstr "El archivo de tema no es válido o su versión no es compatible."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Theme preview"
+msgstr "Vista previa del tema"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Compare appearance"
+msgstr "Comparar apariencia"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Before"
+msgstr "Antes"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "After"
+msgstr "Después"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Discuss"
+msgstr "Conversaciones"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Sales"
+msgstr "Ventas"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "New"
+msgstr "Nuevo"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "City"
+msgstr "Ciudad"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Applies to companies using the global appearance."
+msgstr "Se aplica a las empresas que usan la apariencia global."
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Applies only to"
+msgstr "Se aplica solo a"
+
+#. module: euw_backend_appearance
+#: code:addons/euw_backend_appearance/static/src/appearance.xml:0
+msgid "Currently inherits the global appearance."
+msgstr "Actualmente hereda la apariencia global."

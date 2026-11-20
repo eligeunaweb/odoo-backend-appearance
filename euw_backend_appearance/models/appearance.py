@@ -9,8 +9,8 @@ from PIL import Image, ImageOps
 from odoo import _, api, models
 from odoo.exceptions import AccessError, ValidationError
 
-KEY = "backend_appearance.profile"
-THEMES_KEY = "backend_appearance.themes"
+KEY = "euw_backend_appearance.profile"
+THEMES_KEY = "euw_backend_appearance.themes"
 IMAGE_FIELDS = ("navbar_photo", "logo", "favicon")
 DENSITIES = ("compact", "normal", "spacious")
 PATTERNS = ("solid", "dots", "grid", "diagonal", "waves")
@@ -36,7 +36,7 @@ DEFAULT_PROFILE = {
 
 
 class BackendAppearance(models.AbstractModel):
-    _name = "backend.appearance"
+    _name = "euw.backend.appearance"
     _description = "Backend appearance settings"
 
     @api.model
@@ -95,7 +95,7 @@ class BackendAppearance(models.AbstractModel):
     @api.model
     def _published(self, company=None):
         if company:
-            profile = self._read_profile(company.sudo().backend_appearance_profile)
+            profile = self._read_profile(company.sudo().euw_backend_appearance_profile)
             if profile:
                 return profile
         stored = self.env["ir.config_parameter"].sudo().get_param(KEY)
@@ -122,7 +122,7 @@ class BackendAppearance(models.AbstractModel):
         return {
             "profile": self._published(company),
             "themes": sorted(self._themes()),
-            "inherits_global": bool(company and not self._read_profile(company.sudo().backend_appearance_profile)),
+            "inherits_global": bool(company and not self._read_profile(company.sudo().euw_backend_appearance_profile)),
         }
 
     @api.model
@@ -180,7 +180,7 @@ class BackendAppearance(models.AbstractModel):
         company = self._scope_company(scope)
         profile = self._prepare_profile(values, self._published(company))
         if company:
-            company.sudo().backend_appearance_profile = json.dumps(profile)
+            company.sudo().euw_backend_appearance_profile = json.dumps(profile)
         else:
             self.env["ir.config_parameter"].sudo().set_param(KEY, json.dumps(profile))
         return profile
@@ -190,7 +190,7 @@ class BackendAppearance(models.AbstractModel):
         self._check_admin()
         company = self._scope_company(scope)
         if company:
-            company.sudo().backend_appearance_profile = False
+            company.sudo().euw_backend_appearance_profile = False
         else:
             self.env["ir.config_parameter"].sudo().set_param(KEY, False)
         return self._published()

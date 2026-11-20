@@ -3,7 +3,7 @@ param([switch]$Update)
 $composeArgs = @('-p', 'codex-odoo-appearance-18', '-f', (Join-Path $PSScriptRoot 'compose.test.yml'))
 
 if ($Update) {
-    docker compose @composeArgs run --rm odoo odoo -d appearance_test -u backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
+    docker compose @composeArgs run --rm odoo odoo -d appearance_test -u euw_backend_appearance --test-enable --test-tags /euw_backend_appearance --stop-after-init
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
