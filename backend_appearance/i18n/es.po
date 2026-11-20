@@ -216,3 +216,8 @@ msgstr "Elige una imagen válida en PNG, JPEG o WebP."
 #: code:addons/backend_appearance/models/appearance.py:0
 msgid "Choose a smaller or less detailed image."
 msgstr "Elige una imagen más pequeña o con menos detalle."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "This server cannot read WebP images. Choose PNG or JPEG."
+msgstr "Este servidor no puede leer imágenes WebP. Elige una imagen PNG o JPEG."

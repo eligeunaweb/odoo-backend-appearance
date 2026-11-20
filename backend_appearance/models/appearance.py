@@ -84,7 +84,12 @@ class BackendAppearance(models.AbstractModel):
             data = base64.b64decode(encoded, validate=True)
             if len(data) > PHOTO_LIMIT:
                 raise ValidationError(_("Choose an image of up to 4 MB."))
-            with Image.open(io.BytesIO(data), formats=["JPEG", "PNG", "WEBP"]) as source:
+            formats = ["JPEG", "PNG"]
+            if Image.registered_extensions().get(".webp") == "WEBP":
+                formats.append("WEBP")
+            elif data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+                raise ValidationError(_("This server cannot read WebP images. Choose PNG or JPEG."))
+            with Image.open(io.BytesIO(data), formats=formats) as source:
                 if source.width * source.height > 16_000_000 or getattr(source, "is_animated", False):
                     raise ValidationError(_("Choose a still image of up to 16 megapixels."))
                 source.thumbnail((1920, 420))
