@@ -1,7 +1,8 @@
 {
     "name": "Backend Appearance",
     "summary": "Configure and preview backend colors and density",
-    "author": "Backend Appearance contributors",
+    "author": "Álvaro Martínez",
+    "website": "https://alvaromh.com",
     "version": "16.0.1.4.0",
     "license": "LGPL-3",
     "depends": ["web"],
