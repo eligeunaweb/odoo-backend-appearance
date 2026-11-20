@@ -36,4 +36,4 @@ odoo -d appearance_test -i backend_appearance --test-enable --test-tags /backend
 
 For the manual acceptance test, install Contacts, Sales and Inventory. Create and edit a contact, save a quotation with a product and open an inventory list. Verify search and filters, regular-user access and narrow layouts. Upgrade the module, then uninstall it through Apps on the test database. Reload the client and reopen the records from the test. Check that the appearance returns to the Odoo baseline and that the published profile is removed.
 
-Compatibility target: Odoo 19.0 Community. The runtime and coexistence matrix is pending. License: LGPL-3.
+Compatibility target: Odoo 19.0 Community. Fresh installation and server tests passed in isolated Docker with Contacts, Sales and Inventory. Full browser and uninstall validation are pending. License: LGPL-3.
