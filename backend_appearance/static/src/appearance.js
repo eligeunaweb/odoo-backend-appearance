@@ -79,15 +79,19 @@ class AppearancePanel extends Component {
         Object.assign(this.form, this.appearance.state);
     }
 
+    apply() {
+        const { accent, navbar, density } = this.form;
+        return this.save(() => this.appearance.publish({ accent, navbar, density }));
+    }
+
+    restore() {
+        return this.save(() => this.appearance.restore());
+    }
+
     async save(operation) {
         this.form.busy = true;
         try {
-            if (operation === "publish") {
-                const { accent, navbar, density } = this.form;
-                await this.appearance.publish({ accent, navbar, density });
-            } else {
-                await this.appearance.restore();
-            }
+            await operation();
             Object.assign(this.form, this.appearance.state);
             this.notification.add(_t("Appearance settings saved."), { type: "success" });
         } finally {
