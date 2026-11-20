@@ -1,9 +1,12 @@
-import { Component, onWillStart, useEffect, useState } from "@odoo/owl";
+/** @odoo-module **/
+
 import { registry } from "@web/core/registry";
 import { session } from "@web/session";
-import { useService } from "@web/core/utils/hooks";
+import { useEffect, useService } from "@web/core/utils/hooks";
 import { _t } from "@web/core/l10n/translation";
-import { user } from "@web/core/user";
+
+const { Component, hooks } = owl;
+const { useState } = hooks;
 
 const PATTERNS = ["dots", "grid", "diagonal", "waves"];
 const DEFAULT_PROFILE = {
@@ -39,8 +42,8 @@ function foreground(color) {
 }
 
 registry.category("services").add("backend_appearance", {
-    dependencies: ["orm"],
-    start(env, { orm }) {
+    dependencies: ["orm", "company"],
+    async start(env, { orm }) {
         let published = { ...DEFAULT_PROFILE, ...session.backend_appearance };
         let draft = null;
         const state = { ...published };
@@ -123,8 +126,13 @@ registry.category("services").add("backend_appearance", {
             Object.assign(state, DEFAULT_PROFILE, profile);
             render(state);
         };
-        update(published);
         const call = (method, args) => orm.call("backend.appearance", method, args);
+        try {
+            published = await call("get_current_profile", []);
+        } catch {
+            // Keep the server bootstrap profile if the company lookup fails.
+        }
+        update(published);
         const refresh = async () => {
             published = (await call("get_editor", ["company"])).profile;
             draft = null;
@@ -168,7 +176,7 @@ class AppearancePanel extends Component {
             busy: false, tab: "bar", scope: "global", saved: "", themes: [], themeName: "", selectedTheme: "",
             comparison: "after", previewOpen: false, inheritsGlobal: false,
         });
-        this.companyName = user.activeCompanies[0]?.name || "";
+        this.companyName = useService("company").currentCompany.name;
         this.tabs = [
             { id: "bar", name: _t("Top bar") },
             { id: "menu", name: _t("Apps menu") },
@@ -192,13 +200,6 @@ class AppearancePanel extends Component {
             { id: "diagonal", label: _t("Diagonals") },
             { id: "waves", label: _t("Waves") },
         ];
-        onWillStart(async () => {
-            const draft = this.appearance.draft;
-            await this.loadEditor(draft?.scope || "global");
-            if (draft) {
-                Object.assign(this.form, draft.profile);
-            }
-        });
         useEffect(() => {
             if (this.dirty) {
                 this.appearance.preview(this.profile, this.editor.scope);
@@ -206,6 +207,14 @@ class AppearancePanel extends Component {
                 this.appearance.discard();
             }
         }, () => [this.serializedProfile, this.editor.saved]);
+    }
+
+    async willStart() {
+        const draft = this.appearance.draft;
+        await this.loadEditor(draft?.scope || "global");
+        if (draft) {
+            Object.assign(this.form, draft.profile);
+        }
     }
 
     async loadEditor(scope) {

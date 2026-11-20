@@ -25,7 +25,7 @@ def check_assets(html, stylesheet):
     for path in sorted(paths):
         content = fetch(path.decode())
         assert content and b"CSS error message" not in content, path
-        if path.endswith(b"web.assets_web.min.css"):
+        if path.endswith(b"web.assets_backend.min.css"):
             assert b".ba-editor-card" in content, path
 
 
@@ -49,5 +49,5 @@ request = urllib.request.Request(
 with client.open(request, timeout=25) as response:
     result = json.load(response)["result"]
 assert result["db"] == DATABASE and result["is_system"]
-check_assets(fetch("/odoo?debug=0"), b"web.assets_web.min.css")
+check_assets(fetch("/web?debug=0"), b"web.assets_backend.min.css")
 print("Login and backend assets loaded successfully.")

@@ -384,3 +384,19 @@ html[data-ba-pattern] .o_web_client .o_main_navbar {
         row-gap: var(--ba-form-gap);
     }
 }
+
+/* The older web client does not consume the current Bootstrap button variables. */
+html[data-ba-accent] .o_web_client .btn-primary {
+    color: var(--ba-accent-text);
+    border-color: var(--ba-accent);
+    background-color: var(--ba-accent);
+}
+
+html:is([data-ba-navbar], [data-ba-photo]) .o_web_client .o_main_navbar {
+    .o_menu_brand,
+    .o_nav_entry,
+    .dropdown-toggle {
+        color: var(--NavBar-entry-color);
+        background-color: transparent;
+    }
+}
