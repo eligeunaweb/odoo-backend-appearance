@@ -8,6 +8,8 @@ On a disposable Odoo 19 database, add the repository to the server's add-ons pat
 
 Pick an accent, a navigation bar color and a density. Select **Preview** and open a real contact list and form in the same tab. Return to Settings to apply or discard. Reload a second session to verify publication. Use **Restore defaults** to restore the Odoo baseline. The profile is shared by all companies in the database.
 
+Under **Top bar pattern**, choose solid, dots, grid, diagonals or waves. For a patterned background, set the intensity between 0 and 100 and select **Preview**. Patterns work with the standard bar color or a custom color.
+
 To run the installation and automated tests against an isolated Docker database, open a terminal in this repository:
 
 ```sh

@@ -18,6 +18,49 @@
     --NavBar-entry-backgroundColor--hover: var(--ba-navbar);
 }
 
+[data-ba-pattern="dots"] {
+    --ba-pattern-image: radial-gradient(circle at 2px 2px, var(--ba-pattern-ink) 1.25px, transparent 1.75px);
+    --ba-pattern-size: 8px 8px;
+}
+
+[data-ba-pattern="grid"] {
+    --ba-pattern-image:
+        linear-gradient(to right, var(--ba-pattern-ink) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--ba-pattern-ink) 1px, transparent 1px);
+    --ba-pattern-size: 10px 10px;
+}
+
+[data-ba-pattern="diagonal"] {
+    --ba-pattern-image: repeating-linear-gradient(135deg, var(--ba-pattern-ink) 0 2px, transparent 2px 8px);
+    --ba-pattern-size: auto;
+}
+
+[data-ba-pattern="waves"] {
+    --ba-pattern-image:
+        radial-gradient(ellipse at 50% 0, transparent 59%, var(--ba-pattern-ink) 61% 68%, transparent 70%),
+        radial-gradient(ellipse at 50% 100%, transparent 59%, var(--ba-pattern-ink) 61% 68%, transparent 70%);
+    --ba-pattern-size: 24px 12px;
+}
+
+.ba-pattern-swatch {
+    --ba-pattern-ink: rgba(255, 255, 255, .72);
+    min-width: 3rem;
+    height: 1.2rem;
+    background-color: #495370;
+    background-image: var(--ba-pattern-image, none);
+    background-size: var(--ba-pattern-size, auto);
+}
+
+html[data-ba-pattern] {
+    --ba-pattern-ink: rgba(var(--ba-pattern-rgb, 0, 0, 0), var(--ba-pattern-opacity));
+}
+
+html[data-ba-pattern] .o_web_client .o_main_navbar {
+    --NavBar-entry-backgroundColor: transparent;
+    background-image: var(--ba-pattern-image);
+    background-size: var(--ba-pattern-size);
+}
+
 [data-ba-density="compact"] {
     --ba-row-padding: .25rem;
     --ba-form-gap: .25rem;

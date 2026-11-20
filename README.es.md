@@ -8,6 +8,8 @@ En una base desechable de Odoo 19, añade el repositorio a la ruta de módulos d
 
 Elige un acento, un color para la barra y una densidad. Pulsa **Previsualizar** y abre un listado y un formulario reales de Contactos en esa misma pestaña. Vuelve a Ajustes para aplicar o descartar. Recarga una segunda sesión para comprobar la publicación. Usa **Restaurar valores originales** para recuperar el aspecto de Odoo. El perfil es global para toda la base.
 
+En **Patrón de la barra superior**, elige liso, puntos, cuadrícula, diagonales u ondas. Para un fondo con patrón, ajusta la intensidad de 0 a 100 y pulsa **Previsualizar**. El patrón se puede combinar con el color estándar o con un color propio.
+
 Para instalar el módulo y ejecutar las pruebas automatizadas en Docker, abre PowerShell en esta carpeta:
 
 ```powershell

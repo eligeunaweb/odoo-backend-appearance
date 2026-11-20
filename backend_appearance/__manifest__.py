@@ -1,7 +1,7 @@
 {
     "name": "Backend Appearance",
     "summary": "Configure and preview backend colors and density",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.1.0",
     "license": "LGPL-3",
     "depends": ["web"],
     "data": ["views/appearance.xml"],

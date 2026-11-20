@@ -100,3 +100,48 @@ msgstr "La densidad no es válida."
 #: code:addons/backend_appearance/models/appearance.py:0
 msgid "Only Settings administrators can change backend appearance."
 msgstr "Solo los administradores de Ajustes pueden cambiar la apariencia del gestor."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Top bar pattern"
+msgstr "Patrón de la barra superior"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Pattern intensity"
+msgstr "Intensidad del patrón"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Solid"
+msgstr "Liso"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Dots"
+msgstr "Puntos"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Grid"
+msgstr "Cuadrícula"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Diagonals"
+msgstr "Diagonales"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Waves"
+msgstr "Ondas"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid top bar pattern."
+msgstr "El patrón de la barra superior no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Pattern intensity must be between 0 and 100."
+msgstr "La intensidad del patrón debe estar entre 0 y 100."
