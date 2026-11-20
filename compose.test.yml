@@ -23,5 +23,9 @@ services:
       PASSWORD: local-test-only
     volumes:
       - .:/mnt/extra-addons:ro
+      - odoo_data:/var/lib/odoo
     ports:
       - "127.0.0.1:18119:8069"
+
+volumes:
+  odoo_data:
