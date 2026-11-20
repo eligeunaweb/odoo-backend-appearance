@@ -12,7 +12,7 @@ from ..models.appearance import DEFAULT_PROFILE, KEY
 @tagged("post_install", "-at_install")
 class TestAppearance(TransactionCase):
     def test_publish_restore(self):
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         profile = {
             **DEFAULT_PROFILE,
             "accent": "#3366AA",
@@ -28,11 +28,11 @@ class TestAppearance(TransactionCase):
         self.env["ir.config_parameter"].sudo().set_param(
             KEY, '{"accent":"#123456","navbar":"","density":"compact"}'
         )
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         self.assertEqual(service._published(), {**DEFAULT_PROFILE, "accent": "#123456", "density": "compact"})
 
     def test_invalid_and_corrupt_profiles(self):
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         profile = {**DEFAULT_PROFILE, "accent": "#123456", "density": "spacious"}
         service.publish(profile)
         for invalid in (
@@ -51,7 +51,7 @@ class TestAppearance(TransactionCase):
 
     def test_internal_user_cannot_publish_or_restore(self):
         user = new_test_user(self.env, login="appearance_employee", groups="base.group_user")
-        service = self.env["backend.appearance"].with_user(user)
+        service = self.env["euw.backend.appearance"].with_user(user)
         with self.assertRaises(AccessError):
             service.publish({"accent": "", "navbar": "", "density": "normal"})
         with self.assertRaises(AccessError):
@@ -60,7 +60,7 @@ class TestAppearance(TransactionCase):
             service.normalize_photo("")
 
     def test_top_bar_photo_and_menu(self):
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         original = io.BytesIO()
         Image.new("RGB", (2200, 600), "#3a7bb5").save(original, "PNG")
         encoded = base64.b64encode(original.getvalue()).decode()
@@ -85,7 +85,7 @@ class TestAppearance(TransactionCase):
         self.assertEqual(service.restore(), DEFAULT_PROFILE)
 
     def test_custom_apps_menu_colors(self):
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         profile = {
             **DEFAULT_PROFILE,
             "apps_menu": "custom",
@@ -99,7 +99,7 @@ class TestAppearance(TransactionCase):
         self.assertEqual(service._published()["apps_menu_highlight"], "#000011")
 
     def test_company_precedence_and_fallback(self):
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         other = self.env["res.company"].create({"name": "Appearance test company"})
         global_profile = service.publish({**DEFAULT_PROFILE, "accent": "#114488"})
         scoped = service.with_context(allowed_company_ids=[other.id])
@@ -116,7 +116,7 @@ class TestAppearance(TransactionCase):
             scoped.with_user(employee).publish(global_profile, "company")
 
     def test_saved_and_imported_themes_do_not_publish(self):
-        service = self.env["backend.appearance"]
+        service = self.env["euw.backend.appearance"]
         original = service._published()
         theme = {**DEFAULT_PROFILE, "text_size": "large", "photo_position": 75}
         self.assertIn("Forest", service.save_theme(" Forest ", theme))
