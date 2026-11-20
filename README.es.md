@@ -2,6 +2,12 @@
 
 Ajustes visuales para el cliente interno de Odoo.
 
+![Apariencia del gestor para Odoo 19 Community](backend_appearance/static/description/banner.png)
+
+[Editor de apariencia](backend_appearance/static/description/editor.jpg) ·
+[Menú de aplicaciones](backend_appearance/static/description/apps-menu.jpg) ·
+[Biblioteca de temas](backend_appearance/static/description/themes.jpg)
+
 ## Instalar y comprobar
 
 En una base desechable de Odoo 19, añade el repositorio a la ruta de módulos del servidor, actualiza la lista de aplicaciones en modo desarrollador e instala **Apariencia del gestor**. Quita el filtro Aplicaciones si hace falta. Abre **Ajustes → Apariencia del gestor**.

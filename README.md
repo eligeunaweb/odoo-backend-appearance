@@ -2,6 +2,12 @@
 
 Visual settings for the internal Odoo client. See [Español](README.es.md).
 
+![Backend Appearance for Odoo 19 Community](backend_appearance/static/description/banner.png)
+
+[Appearance editor](backend_appearance/static/description/editor.jpg) ·
+[Apps menu](backend_appearance/static/description/apps-menu.jpg) ·
+[Theme library](backend_appearance/static/description/themes.jpg)
+
 ## Install and verify
 
 On a disposable Odoo 19 database, add the repository to the server's add-ons path, refresh the app list in developer mode and install **Backend Appearance**. Clear the Apps filter if needed. Open **Settings → Backend Appearance**.
