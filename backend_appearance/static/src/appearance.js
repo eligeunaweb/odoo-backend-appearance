@@ -166,6 +166,7 @@ class AppearancePanel extends Component {
         this.form = useState({ ...this.appearance.state });
         this.editor = useState({
             busy: false, tab: "bar", scope: "global", saved: "", themes: [], themeName: "", selectedTheme: "",
+            comparison: "after", previewOpen: false, inheritsGlobal: false,
         });
         this.companyName = user.activeCompanies[0]?.name || "";
         this.tabs = [
@@ -208,15 +209,60 @@ class AppearancePanel extends Component {
     }
 
     async loadEditor(scope) {
-        const { profile, themes } = await this.appearance.call("get_editor", [scope]);
+        const { profile, themes, inherits_global } = await this.appearance.call("get_editor", [scope]);
         this.editor.scope = scope;
         this.editor.themes = themes;
+        this.editor.inheritsGlobal = Boolean(inherits_global);
+        this.editor.comparison = "after";
         Object.assign(this.form, profile);
         this.editor.saved = this.serializedProfile;
     }
 
     switchTab(event) {
         this.editor.tab = event.currentTarget.dataset.section;
+    }
+
+    toggleSample() {
+        this.editor.previewOpen = !this.editor.previewOpen;
+    }
+
+    compareSample(event) {
+        this.editor.comparison = event.currentTarget.dataset.comparison;
+    }
+
+    get sample() {
+        const profile = this.editor.comparison === "before" && this.editor.saved
+            ? JSON.parse(this.editor.saved) : this.profile;
+        const bar = profile.navbar || "#71639e";
+        const accent = profile.accent || "#71639e";
+        const ink = foreground(bar) === "#ffffff" ? "0,0,0" : "255,255,255";
+        const menu = {
+            standard: ["#ffffff", "#e9ecef"],
+            light: ["#f8fafc", "#e2ebf5"],
+            dark: ["#182337", "#34465f"],
+            custom: [profile.apps_menu_background, profile.apps_menu_highlight],
+        }[profile.apps_menu];
+        const photo = profile.navbar_mode === "photo" ? imageUrl(profile.navbar_photo) : "";
+        return {
+            photo,
+            logo: imageUrl(profile.logo),
+            pattern: profile.navbar_mode === "pattern" ? profile.navbar_pattern : "",
+            density: profile.density,
+            text: profile.text_size,
+            style: [
+                `--ba-sample-bar:${bar}`,
+                `--ba-sample-bar-text:${photo ? "#ffffff" : foreground(bar)}`,
+                `--ba-sample-accent:${accent}`,
+                `--ba-sample-accent-text:${foreground(accent)}`,
+                `--ba-pattern-ink:rgba(${ink},${profile.pattern_intensity / (profile.navbar ? 250 : 600)})`,
+                `--ba-sample-menu:${menu[0]}`,
+                `--ba-sample-menu-text:${foreground(menu[0])}`,
+                `--ba-sample-highlight:${menu[1]}`,
+                `--ba-sample-highlight-text:${foreground(menu[1])}`,
+                `--ba-photo-position:${profile.photo_position}%`,
+                photo && `--ba-sample-photo:url("${photo}")`,
+            ].filter(Boolean).join(";"),
+        };
     }
 
     switchScope(event) {

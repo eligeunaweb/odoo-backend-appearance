@@ -106,9 +106,11 @@ class TestAppearance(TransactionCase):
         company_profile = scoped.publish({**DEFAULT_PROFILE, "accent": "#882211"}, "company")
         self.assertEqual(service._published(), global_profile)
         self.assertEqual(scoped.get_editor("company")["profile"], company_profile)
+        self.assertFalse(scoped.get_editor("company")["inherits_global"])
         self.assertEqual(service._published(self.env.company), global_profile)
         self.assertEqual(scoped.restore("company"), global_profile)
         self.assertEqual(scoped.get_editor("company")["profile"], global_profile)
+        self.assertTrue(scoped.get_editor("company")["inherits_global"])
         employee = new_test_user(self.env, login="appearance_scope_employee", groups="base.group_user")
         with self.assertRaises(AccessError):
             scoped.with_user(employee).publish(global_profile, "company")

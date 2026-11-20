@@ -116,6 +116,7 @@ class BackendAppearance(models.AbstractModel):
         return {
             "profile": self._published(company),
             "themes": sorted(self._themes()),
+            "inherits_global": bool(company and not self._read_profile(company.sudo().backend_appearance_profile)),
         }
 
     @api.model

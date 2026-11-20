@@ -460,3 +460,63 @@ msgstr "No se encontró el tema."
 #: code:addons/backend_appearance/models/appearance.py:0
 msgid "Invalid or unsupported appearance theme file."
 msgstr "El archivo de tema no es válido o su versión no es compatible."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Theme preview"
+msgstr "Vista previa del tema"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Compare appearance"
+msgstr "Comparar apariencia"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Before"
+msgstr "Antes"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "After"
+msgstr "Después"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Contacts"
+msgstr "Contactos"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Discuss"
+msgstr "Conversaciones"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Sales"
+msgstr "Ventas"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "New"
+msgstr "Nuevo"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "City"
+msgstr "Ciudad"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Applies to companies using the global appearance."
+msgstr "Se aplica a las empresas que usan la apariencia global."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Applies only to"
+msgstr "Se aplica solo a"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Currently inherits the global appearance."
+msgstr "Actualmente hereda la apariencia global."

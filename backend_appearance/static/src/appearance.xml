@@ -23,6 +23,10 @@
                             t-att-data-section="tab.id" t-on-click="switchTab"><t t-esc="tab.name"/></button>
                 </nav>
 
+                <button type="button" class="btn btn-outline-secondary d-xl-none mb-3"
+                        aria-controls="ba-sample" t-att-aria-expanded="editor.previewOpen ? 'true' : 'false'"
+                        t-on-click="toggleSample">Theme preview</button>
+                <div class="ba-editor-layout">
                 <fieldset class="ba-editor-card p-3 p-md-4" t-att-disabled="editor.busy">
                     <div class="ba-editor-page" t-att-class="{'ba-editor-page-active': editor.tab === 'bar'}">
                         <h2 class="h4">Top bar</h2>
@@ -167,11 +171,52 @@
                         </div>
                     </div>
                 </fieldset>
+                <aside id="ba-sample" class="ba-sample d-xl-block"
+                       t-att-class="{'d-none': !editor.previewOpen}" aria-labelledby="ba-sample-title">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <h2 id="ba-sample-title" class="h5 mb-0">Theme preview</h2>
+                        <div class="btn-group" role="group" aria-label="Compare appearance">
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-comparison="before"
+                                    t-att-aria-pressed="editor.comparison === 'before' ? 'true' : 'false'"
+                                    t-att-class="{active: editor.comparison === 'before'}" t-on-click="compareSample">Before</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary" data-comparison="after"
+                                    t-att-aria-pressed="editor.comparison === 'after' ? 'true' : 'false'"
+                                    t-att-class="{active: editor.comparison === 'after'}" t-on-click="compareSample">After</button>
+                        </div>
+                    </div>
+                    <t t-set="design" t-value="sample"/>
+                    <div class="ba-sample-frame" t-att-style="design.style" t-att-data-text="design.text" aria-hidden="true">
+                        <div class="ba-sample-bar" t-att-data-ba-pattern="design.pattern" t-att-data-photo="design.photo ? 'true' : 'false'">
+                            <img t-if="design.logo" t-att-src="design.logo" alt=""/>
+                            <i class="oi oi-apps"/>
+                            <span>Contacts</span>
+                        </div>
+                        <div class="ba-sample-body">
+                            <div class="ba-sample-menu">
+                                <span>Discuss</span><span>Contacts</span><span>Sales</span>
+                            </div>
+                            <div class="ba-sample-list" t-att-data-density="design.density">
+                                <span class="ba-sample-accent">New</span>
+                                <div><strong>Contact</strong><strong>City</strong></div>
+                                <div><span>María López</span><span>Madrid</span></div>
+                                <div><span>Alex Morgan</span><span>London</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                </div>
 
                 <footer class="ba-editor-actions d-flex flex-wrap align-items-center gap-2 py-3">
                     <button type="button" class="btn btn-primary" t-att-disabled="editor.busy || !dirty" t-on-click="apply">Apply changes</button>
                     <button type="button" class="btn btn-secondary" t-att-disabled="editor.busy || !dirty" t-on-click="discard">Discard changes</button>
-                    <span t-if="dirty" class="small text-muted me-auto" role="status">Unsaved changes</span>
+                    <div class="small text-muted me-auto">
+                        <div t-if="dirty" role="status">Unsaved changes</div>
+                        <div t-if="editor.scope === 'global'">Applies to companies using the global appearance.</div>
+                        <div t-else="">
+                            <span>Applies only to</span> <strong t-esc="companyName"/>
+                            <div t-if="editor.inheritsGlobal">Currently inherits the global appearance.</div>
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-outline-secondary ms-auto" t-att-disabled="editor.busy" t-on-click="restore">
                         <t t-if="editor.scope === 'company'">Use global appearance</t>
                         <t t-else="">Restore defaults</t>
