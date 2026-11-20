@@ -24,7 +24,7 @@
                 </nav>
 
                 <fieldset class="ba-editor-card p-3 p-md-4" t-att-disabled="editor.busy">
-                    <div t-if="editor.tab === 'bar'">
+                    <div class="ba-editor-page" t-att-class="{'ba-editor-page-active': editor.tab === 'bar'}">
                         <h2 class="h4">Top bar</h2>
                         <label for="ba-mode" class="form-label">Background</label>
                         <select id="ba-mode" class="form-select w-auto mb-3" t-model="form.navbar_mode">
@@ -85,7 +85,7 @@
                         </div>
                     </div>
 
-                    <div t-if="editor.tab === 'menu'">
+                    <div class="ba-editor-page" t-att-class="{'ba-editor-page-active': editor.tab === 'menu'}">
                         <h2 class="h4">Apps menu</h2>
                         <div class="d-flex flex-wrap gap-2">
                             <button t-foreach="menuStyles" t-as="style" t-key="style.id" type="button"
@@ -111,7 +111,7 @@
                         </div>
                     </div>
 
-                    <div t-if="editor.tab === 'workspace'">
+                    <div class="ba-editor-page" t-att-class="{'ba-editor-page-active': editor.tab === 'workspace'}">
                         <h2 class="h4">Workspace</h2>
                         <div class="mb-3">
                             <label class="form-label d-block" for="ba-accent">Accent color</label>
@@ -143,7 +143,7 @@
                         </div>
                     </div>
 
-                    <div t-if="editor.tab === 'themes'">
+                    <div class="ba-editor-page" t-att-class="{'ba-editor-page-active': editor.tab === 'themes'}">
                         <h2 class="h4">Themes</h2>
                         <p class="text-muted">Load a theme into the preview and apply it when ready.</p>
                         <label for="ba-theme-name" class="form-label">Theme name</label>

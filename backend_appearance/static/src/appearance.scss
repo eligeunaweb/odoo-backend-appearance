@@ -92,9 +92,20 @@ html[data-ba-text="large"] .o_web_client {
 }
 
 .ba-editor-card {
+    display: grid;
     background: var(--body-bg, #fff);
     border: 1px solid var(--border-color, #d8dadd);
     border-radius: .75rem;
+}
+
+.ba-editor-page {
+    grid-area: 1 / 1;
+    min-width: 0;
+    visibility: hidden;
+}
+
+.ba-editor-page-active {
+    visibility: visible;
 }
 
 .ba-editor-actions {
