@@ -63,7 +63,20 @@
                         <option value="standard">Odoo default</option>
                         <option value="light">Light</option>
                         <option value="dark">Dark</option>
+                        <option value="custom">Custom</option>
                     </select>
+                    <div t-if="form.apps_menu === 'custom'" class="d-flex flex-wrap gap-3 mt-2">
+                        <div>
+                            <label class="form-label d-block" for="ba-apps-background">Apps menu background</label>
+                            <input id="ba-apps-background" type="color" t-att-value="form.apps_menu_background"
+                                   t-on-input="(ev) => form.apps_menu_background = ev.target.value"/>
+                        </div>
+                        <div>
+                            <label class="form-label d-block" for="ba-apps-highlight">Apps menu highlight</label>
+                            <input id="ba-apps-highlight" type="color" t-att-value="form.apps_menu_highlight"
+                                   t-on-input="(ev) => form.apps_menu_highlight = ev.target.value"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="ba-density">Density</label>

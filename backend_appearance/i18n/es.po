@@ -221,3 +221,18 @@ msgstr "Elige una imagen más pequeña o con menos detalle."
 #: code:addons/backend_appearance/models/appearance.py:0
 msgid "This server cannot read WebP images. Choose PNG or JPEG."
 msgstr "Este servidor no puede leer imágenes WebP. Elige una imagen PNG o JPEG."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Custom"
+msgstr "Personalizado"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Apps menu background"
+msgstr "Fondo del menú de aplicaciones"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Apps menu highlight"
+msgstr "Resaltado de la aplicación"

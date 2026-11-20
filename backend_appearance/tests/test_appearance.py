@@ -83,3 +83,17 @@ class TestAppearance(TransactionCase):
             with self.assertRaises(ValidationError):
                 service.normalize_photo(invalid)
         self.assertEqual(service.restore(), DEFAULT_PROFILE)
+
+    def test_custom_apps_menu_colors(self):
+        service = self.env["backend.appearance"]
+        profile = {
+            **DEFAULT_PROFILE,
+            "apps_menu": "custom",
+            "apps_menu_background": "#FFCC00",
+            "apps_menu_highlight": "#000011",
+        }
+        self.assertEqual(service.publish(profile), {**profile, "apps_menu_background": "#ffcc00"})
+        for invalid in ("", "transparent", "url(example.png)", "#fff"):
+            with self.assertRaises(ValidationError):
+                service.publish({**profile, "apps_menu_highlight": invalid})
+        self.assertEqual(service._published()["apps_menu_highlight"], "#000011")

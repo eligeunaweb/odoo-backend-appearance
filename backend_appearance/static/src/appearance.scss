@@ -87,7 +87,12 @@ html[data-ba-apps-menu="dark"] {
     --ba-apps-border: #526580;
 }
 
-html:is([data-ba-apps-menu="light"], [data-ba-apps-menu="dark"]) {
+html[data-ba-apps-menu="custom"] {
+    --ba-apps-text: var(--ba-apps-bg-text, #fff);
+    --ba-apps-border: var(--ba-apps-text);
+}
+
+html:is([data-ba-apps-menu="light"], [data-ba-apps-menu="dark"], [data-ba-apps-menu="custom"]) {
     .dropdown-menu:has(.o_app) {
         background-color: var(--ba-apps-bg);
         border-color: var(--ba-apps-border);
@@ -101,6 +106,7 @@ html:is([data-ba-apps-menu="light"], [data-ba-apps-menu="dark"]) {
 
         &:is(:hover, :focus, :active, .focus, .active, .bg-primary-subtle) {
             background-color: var(--ba-apps-hover) !important;
+            color: var(--ba-apps-hover-text, var(--ba-apps-text));
         }
     }
 

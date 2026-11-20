@@ -13,6 +13,8 @@ const DEFAULT_PROFILE = {
     pattern_intensity: 45,
     navbar_photo: "",
     apps_menu: "standard",
+    apps_menu_background: "#182337",
+    apps_menu_highlight: "#34465f",
 };
 
 function foreground(color) {
@@ -53,6 +55,19 @@ registry.category("services").add("backend_appearance", {
                 root.style.removeProperty("--ba-navbar-photo");
             }
             root.dataset.baAppsMenu = profile.apps_menu;
+            for (const [field, name] of [
+                ["apps_menu_background", "bg"],
+                ["apps_menu_highlight", "hover"],
+            ]) {
+                const color = profile[field];
+                if (profile.apps_menu === "custom" && /^#[0-9a-f]{6}$/i.test(color)) {
+                    root.style.setProperty(`--ba-apps-${name}`, color);
+                    root.style.setProperty(`--ba-apps-${name}-text`, foreground(color));
+                } else {
+                    root.style.removeProperty(`--ba-apps-${name}`);
+                    root.style.removeProperty(`--ba-apps-${name}-text`);
+                }
+            }
             if (!hasPhoto && PATTERNS.includes(profile.navbar_pattern)) {
                 root.dataset.baPattern = profile.navbar_pattern;
                 root.style.setProperty("--ba-pattern-opacity", profile.pattern_intensity / 250);

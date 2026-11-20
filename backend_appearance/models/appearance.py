@@ -12,7 +12,7 @@ from odoo.exceptions import AccessError, ValidationError
 KEY = "backend_appearance.profile"
 DENSITIES = ("compact", "normal", "spacious")
 PATTERNS = ("solid", "dots", "grid", "diagonal", "waves")
-MENU_STYLES = ("standard", "light", "dark")
+MENU_STYLES = ("standard", "light", "dark", "custom")
 PHOTO_LIMIT = 4 * 1024 * 1024
 PHOTO_PROFILE_LIMIT = 300_000
 DEFAULT_PROFILE = {
@@ -23,6 +23,8 @@ DEFAULT_PROFILE = {
     "pattern_intensity": 45,
     "navbar_photo": "",
     "apps_menu": "standard",
+    "apps_menu_background": "#182337",
+    "apps_menu_highlight": "#34465f",
 }
 
 
@@ -36,10 +38,13 @@ class BackendAppearance(models.AbstractModel):
         if not isinstance(values, dict) or not required <= values.keys() <= DEFAULT_PROFILE.keys():
             raise ValidationError(_("Invalid appearance profile."))
         values = {**DEFAULT_PROFILE, **values}
-        for key in ("accent", "navbar"):
+        for key in ("accent", "navbar", "apps_menu_background", "apps_menu_highlight"):
             value = values[key]
-            if not isinstance(value, str) or (value and not re.fullmatch(r"#[0-9a-fA-F]{6}", value)):
+            if not isinstance(value, str) or (
+                (value or key.startswith("apps_menu_")) and not re.fullmatch(r"#[0-9a-fA-F]{6}", value)
+            ):
                 raise ValidationError(_("Use a color in #RRGGBB format."))
+            values[key] = value.lower()
         if values["density"] not in DENSITIES:
             raise ValidationError(_("Invalid density."))
         if values["navbar_pattern"] not in PATTERNS:
@@ -54,7 +59,7 @@ class BackendAppearance(models.AbstractModel):
             photo and (not photo.startswith("/9j/") or not re.fullmatch(r"[A-Za-z0-9+/]+={0,2}", photo))
         ):
             raise ValidationError(_("Invalid top bar photo."))
-        return {**values, "accent": values["accent"].lower(), "navbar": values["navbar"].lower()}
+        return values
 
     @api.model
     def _published(self):

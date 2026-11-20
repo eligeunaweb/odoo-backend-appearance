@@ -12,6 +12,8 @@ En **Patrón de la barra superior**, elige liso, puntos, cuadrícula, diagonales
 
 Carga una **Foto de la barra superior** en PNG, JPEG o WebP de hasta 4 MB. Una foto panorámica suele encajar mejor. Odoo reduce la imagen y la barra muestra un recorte centrado con una capa oscura para los textos. Al quitar la foto reaparecen el color y el patrón elegidos. En **Estilo del menú de aplicaciones** puedes elegir estándar, claro u oscuro.
 
+El estilo **Personalizado** permite elegir el fondo del menú y el resaltado de la aplicación. El texto cambia automáticamente a negro o blanco según el fondo de cada estado.
+
 Para instalar el módulo y ejecutar las pruebas automatizadas en Docker, abre PowerShell en esta carpeta:
 
 ```powershell

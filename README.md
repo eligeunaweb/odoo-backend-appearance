@@ -18,6 +18,8 @@ To run the installation and automated tests against an isolated Docker database,
 docker compose -p codex-odoo-appearance -f compose.test.yml run --rm odoo odoo -d appearance_test -i backend_appearance --test-enable --test-tags /backend_appearance --stop-after-init
 ```
 
+The **Custom** style lets you pick the apps menu background and highlight. Text automatically switches between black and white according to each state's background.
+
 For an existing disposable test server, retain its database connection and add-ons settings:
 
 ```sh
