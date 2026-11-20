@@ -4,7 +4,7 @@ import io
 from PIL import Image
 
 from odoo.exceptions import AccessError, ValidationError
-from odoo.tests import TransactionCase, new_test_user, tagged
+from odoo.tests.common import TransactionCase, new_test_user, tagged
 
 from ..models.appearance import DEFAULT_PROFILE, KEY
 

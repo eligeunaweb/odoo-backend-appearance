@@ -2,9 +2,8 @@
     "name": "Backend Appearance",
     "summary": "Configure and preview backend colors and density",
     "author": "Backend Appearance contributors",
-    "version": "19.0.1.4.0",
+    "version": "17.0.1.4.0",
     "license": "LGPL-3",
-    "images": ["static/description/banner.png"],
     "depends": ["web"],
     "data": ["views/appearance.xml"],
     "assets": {
