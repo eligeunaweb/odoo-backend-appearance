@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="backend_appearance.Panel">
+        <section class="o_action overflow-auto p-4">
+            <h1>Backend Appearance</h1>
+            <p>Preview changes in this tab, then return here to apply or discard them.</p>
+            <fieldset t-att-disabled="form.busy">
+                <div class="mb-3">
+                    <label class="form-label" for="ba-accent">Accent color</label>
+                    <div class="d-flex gap-2">
+                        <input id="ba-accent" type="color" t-att-value="form.accent || '#714b67'"
+                               t-on-input="(ev) => form.accent = ev.target.value"/>
+                        <button class="btn btn-secondary" t-on-click="() => form.accent = ''">Use Odoo default</button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="ba-navbar">Top bar color</label>
+                    <div class="d-flex gap-2">
+                        <input id="ba-navbar" type="color" t-att-value="form.navbar || '#ffffff'"
+                               t-on-input="(ev) => form.navbar = ev.target.value"/>
+                        <button class="btn btn-secondary" t-on-click="() => form.navbar = ''">Use Odoo default</button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="ba-density">Density</label>
+                    <select id="ba-density" class="form-select w-auto" t-model="form.density">
+                        <option value="compact">Compact</option>
+                        <option value="normal">Normal</option>
+                        <option value="spacious">Spacious</option>
+                    </select>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-secondary" t-on-click="preview">Preview</button>
+                    <button class="btn btn-primary" t-on-click="() => save('publish')">Apply</button>
+                    <button class="btn btn-secondary" t-on-click="discard">Discard preview</button>
+                    <button class="btn btn-outline-secondary" t-on-click="() => save('restore')">Restore defaults</button>
+                </div>
+            </fieldset>
+        </section>
+    </t>
+</templates>

@@ -1,0 +1,102 @@
+msgid ""
+msgstr ""
+"Language: es\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: backend_appearance
+#: model:ir.actions.client,name:backend_appearance.action_appearance
+#: model:ir.ui.menu,name:backend_appearance.menu_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Backend Appearance"
+msgstr "Apariencia del gestor"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Preview changes in this tab, then return here to apply or discard them."
+msgstr "Previsualiza los cambios en esta pestaña y vuelve aquí para aplicarlos o descartarlos."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Accent color"
+msgstr "Color de acento"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Top bar color"
+msgstr "Color de la barra superior"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Use Odoo default"
+msgstr "Usar el valor de Odoo"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Density"
+msgstr "Densidad"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Compact"
+msgstr "Compacta"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Normal"
+msgstr "Normal"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Spacious"
+msgstr "Espaciosa"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Preview"
+msgstr "Previsualizar"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Apply"
+msgstr "Aplicar"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Discard preview"
+msgstr "Descartar previsualización"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.xml:0
+msgid "Restore defaults"
+msgstr "Restaurar valores originales"
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Preview is active in this tab."
+msgstr "La previsualización está activa en esta pestaña."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/static/src/appearance.js:0
+msgid "Appearance settings saved."
+msgstr "Se han guardado los ajustes de apariencia."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid appearance profile."
+msgstr "El perfil de apariencia no es válido."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Use a color in #RRGGBB format."
+msgstr "Usa un color en formato #RRGGBB."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Invalid density."
+msgstr "La densidad no es válida."
+
+#. module: backend_appearance
+#: code:addons/backend_appearance/models/appearance.py:0
+msgid "Only Settings administrators can change backend appearance."
+msgstr "Solo los administradores de Ajustes pueden cambiar la apariencia del gestor."

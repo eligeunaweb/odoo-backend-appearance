@@ -1,0 +1,39 @@
+[data-ba-accent] .o_web_client .btn-primary {
+    --btn-bg: var(--ba-accent);
+    --btn-border-color: var(--ba-accent);
+    --btn-color: var(--ba-accent-text);
+    --btn-hover-bg: var(--ba-accent);
+    --btn-hover-border-color: var(--ba-accent);
+    --btn-hover-color: var(--ba-accent-text);
+    --btn-active-bg: var(--ba-accent);
+    --btn-active-border-color: var(--ba-accent);
+    --btn-active-color: var(--ba-accent-text);
+}
+
+[data-ba-navbar] .o_web_client .o_main_navbar {
+    background: var(--ba-navbar);
+    --NavBar-entry-color: var(--ba-navbar-text);
+    --NavBar-brand-color: var(--ba-navbar-text);
+    --NavBar-entry-backgroundColor: var(--ba-navbar);
+    --NavBar-entry-backgroundColor--hover: var(--ba-navbar);
+}
+
+[data-ba-density="compact"] {
+    --ba-row-padding: .25rem;
+    --ba-form-gap: .25rem;
+}
+
+[data-ba-density="spacious"] {
+    --ba-row-padding: .8rem;
+    --ba-form-gap: .85rem;
+}
+
+:is([data-ba-density="compact"], [data-ba-density="spacious"]) .o_web_client {
+    .o_list_renderer .o_list_table > tbody > tr.o_data_row > td {
+        padding-block: var(--ba-row-padding);
+    }
+
+    .o_form_view .o_inner_group {
+        row-gap: var(--ba-form-gap);
+    }
+}
