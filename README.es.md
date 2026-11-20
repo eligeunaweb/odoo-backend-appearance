@@ -2,7 +2,7 @@
 
 Ajustes visuales para el cliente interno de Odoo.
 
-**Estado:** adaptación en pruebas. Falta validar esta rama en Docker y en el navegador.
+**Validación:** instalación limpia y pruebas de servidor superadas en Docker aislado el 20 de noviembre de 2026. Quedan pendientes el navegador y la desinstalación.
 
 ## Instalar y comprobar
 
@@ -32,4 +32,4 @@ odoo -d appearance_test -i backend_appearance --test-enable --test-tags /backend
 
 Para la aceptación manual, instala Contactos, Ventas e Inventario. Crea y edita un contacto, guarda un presupuesto con un producto y abre un listado de Inventario. Comprueba búsquedas, filtros, permisos de un usuario normal y el diseño en pantalla estrecha. Actualiza el módulo y desinstálalo desde Aplicaciones en la base de pruebas. Recarga el cliente y abre de nuevo los registros creados. Comprueba que se recupera el aspecto original y se elimina el perfil publicado.
 
-Objetivo de compatibilidad: Odoo 15.0 Community. Pendiente de validación en ejecución y de convivencia con otros módulos. Licencia: LGPL-3.
+Objetivo de compatibilidad: Odoo 15.0 Community. Instalación limpia y pruebas de servidor superadas en Docker aislado con Contactos, Ventas e Inventario. Quedan pendientes la validación visual completa y la desinstalación. Licencia: LGPL-3.
