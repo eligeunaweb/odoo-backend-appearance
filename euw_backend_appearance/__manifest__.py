@@ -3,8 +3,9 @@
     "summary": "Configure and preview backend colors and density",
     "author": "Álvaro Martínez",
     "website": "https://alvaromh.com",
-    "version": "18.0.1.4.0",
+    "version": "18.0.1.4.1",
     "license": "LGPL-3",
+    "images": ["static/description/banner.png"],
     "depends": ["web"],
     "data": ["views/appearance.xml"],
     "assets": {
